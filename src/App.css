@@ -1,38 +1,350 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-user-select: none; /* Chrome all / Safari all */
+  -moz-user-select: none; /* Firefox all */
+  -ms-user-select: none; /* IE 10+ */
 }
 
-.App-logo {
-  height: 40vmin;
+:root {
+  --bright-red: #f87070;
+  --bright-blue: #70f3f8;
+  --bright-purple: #d881f8;
+
+  --dark-purple: #1e213f;
+}
+
+body {
+  background-color: var(--dark-purple);
+}
+
+.logo {
+  display: block;
+  margin: 5vh auto;
+}
+
+label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--dark-purple);
+  opacity: 40%;
+  margin-bottom: 0.5rem;
+}
+
+button {
+  font-weight: bold;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
   pointer-events: none;
+  user-select: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Tabs */
+
+.tabs {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #161932;
+  border-radius: 31.5px;
+  height: 63px;
+  width: fit-content;
+  padding: 0 0.5rem;
+  position: relative;
+  z-index: 1;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+button {
+  height: 48px;
+  border-radius: 26.5px;
+  font-size: 14px;
+  padding: 0 2rem;
+  cursor: pointer;
+  transition: 0.2s;
+  border: none;
+}
+
+.tabs__btn {
+  height: 48px;
+  border-radius: 26.5px;
+  font-size: 14px;
+  padding: 0 2rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: hsla(227, 100%, 92%, 0.4);
+}
+
+.tabs__btn:hover {
+  color: #d7e0ff;
+}
+
+.tabs__btn__blue,
+.tabs__btn__red,
+.tabs__btn__purple {
+  transition: 0.2s;
+  color: var(--dark-purple);
+}
+
+.tabs__btn__red {
+  background: var(--bright-red);
+}
+
+.tabs__btn__blue {
+  background: var(--bright-blue);
+}
+
+.tabs__btn__purple {
+  background: var(--bright-purple);
+}
+
+.tabs__btn__space {
+  font-family: 'Space Mono', sans-serif;
+}
+
+.tabs__btn__roboto {
+  font-family: 'Roboto Slab', sans-serif;
+}
+
+.tabs__btn__kumbh {
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+/* Timer */
+.time__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    315deg,
+    rgba(46, 50, 90, 1) 0%,
+    rgba(14, 17, 42, 1) 100%
+  );
+  height: 410px;
+  width: 410px;
+  border-radius: 50%;
+  box-shadow: -50px -50px 100px 0px rgba(39, 44, 90, 1),
+    50px 50px 100px 0px rgba(18, 21, 48, 1);
+}
+
+.time__container {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #161932;
+  border-radius: 50%;
+  height: 366px;
+  width: 366px;
+}
+
+.time__container p {
+  letter-spacing: 15px;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.outer__wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 6vh;
+}
+
+/* settings */
+.settings {
+  display: block;
+  margin: 9vh auto 0 auto;
+  cursor: pointer;
+}
+
+.settings__modal__header {
+  border-bottom: 1px solid #e3e1e1;
+}
+
+.settings__modal__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem 2rem 2rem;
+}
+
+.settings__modal__container h1 {
+  font-size: 28px;
+  color: #161932;
+}
+
+.settings__icon__close {
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  opacity: 0.5;
+}
+
+.settings__icon__close:hover {
+  opacity: 1;
+}
+
+.settings__body {
+  padding: 0 2rem;
+}
+
+.settings__time {
+  padding: 2rem 0 1.5rem 0;
+  border-bottom: 1px solid hsla(234, 39%, 14%, 0.1);
+}
+
+.settings__time__title {
+  letter-spacing: 5px;
+  font-size: 13px;
+  margin-bottom: 1.2rem;
+}
+
+.settings__label__group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.settings__label__icons {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: absolute;
+  right: 1rem;
+  bottom: 0.4rem;
 }
 
-.App-link {
-  color: #61dafb;
+.settings__icon__arrow {
+  margin-bottom: 7px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  opacity: 0.25;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.settings__icon__arrow:hover {
+  opacity: 1;
+}
+
+.settings__font {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid hsla(234, 39%, 14%, 0.1);
+  padding: 1rem 0;
+}
+
+.no-border {
+  border: none;
+  padding: 1rem 0 0 0;
+}
+
+.settings__title {
+  letter-spacing: 5px;
+  font-size: 13px;
+  color: #161932;
+}
+
+.settings__font__options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0.3rem;
+}
+
+.settings__font__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #eff1fa;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.settings__font__circle__outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  border-radius: 50%;
+  transition: 0.2s ease-in-out;
+}
+.settings__font__circle__outer:hover {
+  border: 1px solid #eff1fa;
+}
+
+.font__active {
+  color: #fff;
+  background-color: var(--dark-purple);
+}
+
+.roboto {
+  font-family: 'Roboto Slab', sans-serif;
+  font-weight: 400;
+}
+
+.space-mono {
+  font-family: 'Space Mono', sans-serif;
+}
+
+.kumbh-sans {
+  font-family: 'Kumbh Sans', sans-serif;
+}
+
+.circle__red {
+  background: var(--bright-red);
+}
+
+.circle__blue {
+  background: var(--bright-blue);
+}
+
+.circle__purple {
+  background: var(--bright-purple);
+}
+
+.circle__blue,
+.circle__purple,
+.circle__red {
+  color: #161932;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #0a0c1c;
+  opacity: 50%;
+  z-index: 98;
+}
+
+.modal__wrapper {
+  position: absolute;
+  width: 100%;
+  top: 16.5vh;
+  z-index: 99;
 }

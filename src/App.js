@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-
+import logo from './components/assets/logo.svg';
+import SettingsIcon from './components/Settings/SettingsIcon';
+import TabWrapper from './components/TabWrapper';
+import TimerWrapper from './components/TimerWrapper';
+import SettingsModal from './components/Settings/SettingsModal';
+import { useSelector } from 'react-redux';
 function App() {
+  const { modal } = useSelector((state) => state.pomodoro);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img alt="pomdoro-logo" src={logo} className="logo" />
+      <TabWrapper />
+      <div className="outer__wrapper">
+        <TimerWrapper />
+      </div>
+      <SettingsIcon />
+      {modal && <div className="overlay"></div>}
+      <div className="modal__wrapper">{modal && <SettingsModal />}</div>
     </div>
   );
 }
